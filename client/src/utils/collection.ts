@@ -1,4 +1,4 @@
-import { InfiniteData, QueryClient } from '@tanstack/react-query';
+import { InfiniteData, QueryClient } from '@tanstack/react-query-v4';
 
 export const addData = <TCollection, TData>(
   data: InfiniteData<TCollection>,

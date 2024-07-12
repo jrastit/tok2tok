@@ -10,7 +10,7 @@ import {
   defaultAssistantFormValues,
 } from 'librechat-data-provider';
 import type { UseFormReset } from 'react-hook-form';
-import type { UseMutationResult } from '@tanstack/react-query';
+import type { UseMutationResult } from '@tanstack/react-query-v4';
 import type { Assistant, AssistantCreateParams, AssistantsEndpoint } from 'librechat-data-provider';
 import type {
   Actions,

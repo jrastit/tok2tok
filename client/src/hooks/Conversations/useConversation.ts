@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QueryKeys } from 'librechat-data-provider';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import { useSetRecoilState, useResetRecoilState, useRecoilCallback } from 'recoil';
 import { useGetEndpointsQuery, useGetModelsQuery } from 'librechat-data-provider/react-query';
 import type {

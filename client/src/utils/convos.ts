@@ -19,7 +19,7 @@ import type {
 } from 'librechat-data-provider';
 
 import { addData, deleteData, updateData, findPage } from './collection';
-import { InfiniteData } from '@tanstack/react-query';
+import { InfiniteData } from '@tanstack/react-query-v4';
 
 export const dateKeys = {
   today: 'com_ui_date_today',

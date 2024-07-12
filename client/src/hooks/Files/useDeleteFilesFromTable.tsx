@@ -1,4 +1,4 @@
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import { QueryKeys } from 'librechat-data-provider';
 import type { BatchFile, TFile } from 'librechat-data-provider';
 import { useDeleteFilesMutation } from '~/data-provider';

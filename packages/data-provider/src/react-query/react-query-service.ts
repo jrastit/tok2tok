@@ -1,9 +1,9 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query-v4';
 import type {
   UseQueryOptions,
   UseMutationResult,
   QueryObserverResult,
-} from '@tanstack/react-query';
+} from '@tanstack/react-query-v4';
 import { initialModelsConfig, LocalStorageKeys } from '../config';
 import { defaultOrderQuery } from '../types/assistants';
 import * as dataService from '../data-service';

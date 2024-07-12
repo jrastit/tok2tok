@@ -1,4 +1,4 @@
-import type { InfiniteData } from '@tanstack/react-query';
+import type { InfiniteData } from '@tanstack/react-query-v4';
 import type { TMessage, TConversation, TSharedLink } from '../schemas';
 import type * as t from '../types';
 export type Conversation = {

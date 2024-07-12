@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import type { InfiniteData } from '@tanstack/react-query';
+import type { InfiniteData } from '@tanstack/react-query-v4';
 import type {
   TMessage,
   TResPlugin,

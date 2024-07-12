@@ -3,7 +3,7 @@ import { useMemo, useRef, useEffect, useCallback } from 'react';
 import { usePromptGroupsInfiniteQuery } from '~/data-provider';
 import debounce from 'lodash/debounce';
 import store from '~/store';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import { QueryKeys } from 'librechat-data-provider';
 
 export default function usePromptGroupsNav() {

@@ -1,7 +1,7 @@
 import download from 'downloadjs';
 import { useCallback } from 'react';
 import exportFromJSON from 'export-from-json';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import {
   QueryKeys,
   ContentTypes,

@@ -23,7 +23,7 @@ import type {
   TSetOption as SetOption,
   TokenExchangeMethodEnum,
 } from 'librechat-data-provider';
-import type { UseMutationResult } from '@tanstack/react-query';
+import type { UseMutationResult } from '@tanstack/react-query-v4';
 import type { LucideIcon } from 'lucide-react';
 
 export type AudioChunk = {

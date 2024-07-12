@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import { useCallback, useEffect } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import { QueryKeys } from 'librechat-data-provider';
 import { useGetEndpointsQuery } from 'librechat-data-provider/react-query';
 import type { TModelsConfig, TEndpointsConfig } from 'librechat-data-provider';

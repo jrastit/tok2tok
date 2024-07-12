@@ -1,6 +1,6 @@
 import * as Popover from '@radix-ui/react-popover';
 import type { Assistant, AssistantCreateParams, AssistantsEndpoint } from 'librechat-data-provider';
-import type { UseMutationResult } from '@tanstack/react-query';
+import type { UseMutationResult } from '@tanstack/react-query-v4';
 import { Dialog, DialogTrigger, Label } from '~/components/ui';
 import { useChatContext, useToastContext } from '~/Providers';
 import { useDeleteAssistantMutation } from '~/data-provider';

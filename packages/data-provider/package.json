@@ -69,7 +69,7 @@
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "@tanstack/react-query": "^4.28.0"
+    "@tanstack/react-query-v4": "npm:@tanstack/react-query@4.36.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

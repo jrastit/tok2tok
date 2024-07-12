@@ -1,5 +1,5 @@
 import { excelMimeTypes, QueryKeys } from 'librechat-data-provider';
-import type { QueryClient } from '@tanstack/react-query';
+import type { QueryClient } from '@tanstack/react-query-v4';
 import type { TFile } from 'librechat-data-provider';
 import SheetPaths from '~/components/svg/Files/SheetPaths';
 import TextPaths from '~/components/svg/Files/TextPaths';

@@ -4,13 +4,13 @@ import {
   defaultOrderQuery,
   defaultAssistantsVersion,
 } from 'librechat-data-provider';
-import { useQuery, useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useQueryClient } from '@tanstack/react-query-v4';
 import type {
   UseInfiniteQueryOptions,
   QueryObserverResult,
   UseQueryOptions,
   UseQueryResult,
-} from '@tanstack/react-query';
+} from '@tanstack/react-query-v4';
 import type t from 'librechat-data-provider';
 import type {
   Action,

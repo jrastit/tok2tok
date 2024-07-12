@@ -1,5 +1,5 @@
 import { InfiniteCollections, QueryKeys } from 'librechat-data-provider';
-import type { InfiniteData, QueryClient } from '@tanstack/react-query';
+import type { InfiniteData, QueryClient } from '@tanstack/react-query-v4';
 import type {
   PromptGroupListResponse,
   PromptGroupListData,

@@ -1,13 +1,13 @@
 import * as Popover from '@radix-ui/react-popover';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import {
   fileConfig as defaultFileConfig,
   QueryKeys,
   defaultOrderQuery,
   mergeFileConfig,
 } from 'librechat-data-provider';
-import type { UseMutationResult } from '@tanstack/react-query';
+import type { UseMutationResult } from '@tanstack/react-query-v4';
 import type {
   Metadata,
   Assistant,

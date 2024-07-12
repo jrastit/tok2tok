@@ -7,7 +7,7 @@ import type {
   DeleteFilesResponse,
   DeleteFilesBody,
 } from 'librechat-data-provider';
-import type { UseMutateAsyncFunction } from '@tanstack/react-query';
+import type { UseMutateAsyncFunction } from '@tanstack/react-query-v4';
 import type { ExtendedFile, GenericSetter } from '~/common';
 import useSetFilesToDelete from './useSetFilesToDelete';
 

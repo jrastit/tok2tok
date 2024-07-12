@@ -1,9 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query-v4';
 import type {
   UseMutationResult,
   QueryObserverResult,
   UseQueryOptions,
-} from '@tanstack/react-query';
+} from '@tanstack/react-query-v4';
 import { QueryKeys, dataService, promptPermissionsSchema } from 'librechat-data-provider';
 import type * as t from 'librechat-data-provider';
 

@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query-v4';
 import {
   Constants,
   QueryKeys,
