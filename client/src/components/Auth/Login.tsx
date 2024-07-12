@@ -14,6 +14,9 @@ function Login() {
   return (
     <>
       {error && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
+      <div className="text-center">
+        <w3m-button/>
+      </div>
       {startupConfig?.emailLoginEnabled && (
         <LoginForm
           onSubmit={login}
