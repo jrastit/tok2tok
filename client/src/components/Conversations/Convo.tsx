@@ -11,6 +11,7 @@ import { ArchiveIcon } from '~/components/svg';
 import { useToastContext } from '~/Providers';
 import DropDownMenu from './DropDownMenu';
 import ArchiveButton from './ArchiveButton';
+import CostButton from './CostButton';
 import DeleteButton from './DeleteButton';
 import RenameButton from './RenameButton';
 import HoverToggle from './HoverToggle';
@@ -126,6 +127,13 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
           setIsPopoverActive={setIsPopoverActive}
         >
           <DropDownMenu>
+            <CostButton
+              renaming={renaming}
+              onRename={onRename}
+              renameHandler={renameHandler}
+              appendLabel={true}
+              className="mb-[3.5px]"
+            />
             {startupConfig && startupConfig.sharedLinksEnabled && (
               <ShareButton
                 conversationId={conversationId}
