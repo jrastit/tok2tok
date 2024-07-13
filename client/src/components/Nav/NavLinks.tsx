@@ -83,7 +83,7 @@ function NavLinks() {
                 {startupConfig?.checkBalance && (
                   <>
                     <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
-                      {`Balance: ${parseFloat(balanceQuery.data || '0').toFixed(2)}`}
+                      {`Balance: ${(parseFloat(balanceQuery.data || '0')/1000000).toFixed(3)} $`}
                     </div>
                     <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
                   </>
