@@ -4,6 +4,7 @@ import type { TLoginLayoutContext } from '~/common';
 import { ErrorMessage } from '~/components/Auth/ErrorMessage';
 import { getLoginError } from '~/utils';
 import { useLocalize } from '~/hooks';
+import ConnectButton from './ConnectButton';
 import LoginForm from './LoginForm';
 
 function Login() {
@@ -15,7 +16,7 @@ function Login() {
     <>
       {error && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
       <div className="text-center">
-        <w3m-button/>
+        <p><center>{ConnectButton()}</center></p>
       </div>
       {startupConfig?.emailLoginEnabled && (
         <LoginForm
