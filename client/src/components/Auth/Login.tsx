@@ -11,12 +11,12 @@ import { useEffect, useState } from 'react';
 
 function Login() {
   const authContext = useAuthContext();
-  const { signMessage } = useSignMessage();
+  const { signMessageAsync } = useSignMessage();
   const localize = useLocalize();
   const { error, setError, login } = useAuthContext();
   const { startupConfig } = useOutletContext<TLoginLayoutContext>();
 
-  const { address } = useAccount() ?? {};
+  const { address } = useAccount();
   const [nonce, setNonce] = useState<string>();
   const [pending, setPending] = useState(false);
   const [signature, setSignature] = useState<string>();
@@ -43,12 +43,11 @@ function Login() {
       if (!pending) {
         setPending(true);
         console.log('### Requesting signature');
-        signMessage({ message: nonce }, {
-          onSuccess: (data) => {
-            setSignature(data);
-            setPending(false);
-          },
-        });
+        (async () => {
+          const data = await signMessageAsync({ message: nonce });
+          setSignature(data);
+          setPending(false);
+        })();
       }
     } else if (address && nonce && signature) {
       if (!pending) {
@@ -67,13 +66,15 @@ function Login() {
         })();
       }
     }
-  }, [nonce, address, pending, authContext, signMessage, signature]);
+  }, [nonce, address, pending, authContext, signMessageAsync, signature]);
 
   return (
     <>
       {error && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
       <div className="text-center">
-        <p><center>{ConnectButton()}</center></p>
+        <p>
+          <center>{ConnectButton()}</center>
+        </p>
       </div>
       {startupConfig?.emailLoginEnabled && (
         <LoginForm
