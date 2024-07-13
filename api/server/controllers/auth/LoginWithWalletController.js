@@ -25,8 +25,10 @@ const loginWithWalletController = async (req, res) => {
       return res.status(200).send({ nonce });
     } else if (type === 'callback') {
       const { nonce, signature } = req.body;
-      if (nonce === nonces[address].nonce && signature === 'FAKE') {
+      if (nonce === nonces[address].nonce) {
         // TODO check signature
+        console.log(`###### Received signature ${signature}`);
+        delete nonces[address];
 
         let user = await findUser({ walletAddress: address });
         if (!user) {
