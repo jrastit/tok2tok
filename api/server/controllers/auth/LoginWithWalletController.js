@@ -18,7 +18,8 @@ const noncesCleanup = () => {
 const loginWithWalletController = async (req, res) => {
   try {
     noncesCleanup();
-    const { type, address } = req.body;
+    const { type, address: addressRaw } = req.body;
+    const address = addressRaw.toLowerCase();
     if (type === 'nonce') {
       const nonce = `tok2tok.ai validation message: address=${address} nonce=${uuid()}`;
       nonces[address] = { nonce, maxDate: Date.now() + (5 * 60 * 1000) };
