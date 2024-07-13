@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from 'react';
-import { cn } from '~/utils';
+import { cn, formatAmount } from '~/utils';
 import { useGetConversationByIdQuery } from 'librechat-data-provider/react-query';
 
 interface CostButtonProps {
@@ -24,7 +24,7 @@ export default function CostButton({
         className,
       )}
     >
-      Cost: {((data?.cost ?? 0) / 1000000).toFixed(3)} USDC
+      Cost: {formatAmount(data?.cost ?? 0)} USDC
     </div>
   );
 }

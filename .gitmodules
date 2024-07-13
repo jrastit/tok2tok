@@ -1,0 +1,3 @@
+[submodule "tok2tok-contract"]
+	path = tok2tok-contract
+	url = https://github.com/jrastit/tok2tok-contract.git
