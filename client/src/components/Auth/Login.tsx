@@ -72,7 +72,11 @@ function Login() {
     <>
       {error && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
       <div className="text-center">
-        <w3m-button/>
+        <p>
+          <center>
+            <w3m-button/>
+          </center>
+        </p>
       </div>
       {startupConfig?.emailLoginEnabled && (
         <LoginForm
