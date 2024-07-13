@@ -5,6 +5,7 @@ import type { LocalizeFunction } from '~/common';
 import { formatJSON, extractJson, isJson } from '~/utils/json';
 import useLocalize from '~/hooks/useLocalize';
 import CodeBlock from './CodeBlock';
+import { formatAmount } from '~/utils';
 
 const localizedErrorPrefix = 'com_error';
 
@@ -62,7 +63,7 @@ const errorMessages = {
   },
   token_balance: (json: TTokenBalance) => {
     const { balance, tokenCost, promptTokens, generations } = json;
-    const message = `Insufficient Funds! Balance: ${balance}. Prompt tokens: ${promptTokens}. Cost: ${tokenCost}.`;
+    const message = `Insufficient Funds! Balance: ${formatAmount(balance['$numberDecimal'])}. Prompt tokens: ${promptTokens}. Cost: ${tokenCost}.`;
     return (
       <>
         {message}
