@@ -1,46 +1,30 @@
-import type { MouseEvent, ReactElement } from 'react';
-import { EditIcon, CheckMark } from '~/components/svg';
-import { useLocalize } from '~/hooks';
+import { ReactElement, useEffect } from 'react';
 import { cn } from '~/utils';
+import { useGetConversationByIdQuery } from 'librechat-data-provider/react-query';
 
 interface CostButtonProps {
-  renaming: boolean;
-  renameHandler: (e: MouseEvent<HTMLButtonElement>) => void;
-  onRename?: (e: MouseEvent<HTMLButtonElement>) => void;
-  appendLabel?: boolean;
+  conversationId: string;
   className?: string;
-  disabled?: boolean;
 }
 
 export default function CostButton({
-  renaming,
-  onRename,
-  renameHandler,
+  conversationId,
   className = '',
-  disabled = true,
-  appendLabel = false,
 }: CostButtonProps): ReactElement {
-  const localize = useLocalize();
-  const handler = renaming ? onRename : renameHandler;
+  const { data, refetch } = useGetConversationByIdQuery(conversationId);
+
+  useEffect(() => {
+    refetch();
+  });
 
   return (
-    <button
+    <div
       className={cn(
-        'group m-1.5 flex w-full cursor-pointer items-center gap-2 rounded p-2.5 text-sm hover:bg-gray-200 focus-visible:bg-gray-200 focus-visible:outline-0 radix-disabled:pointer-events-none radix-disabled:opacity-50 dark:hover:bg-gray-600 dark:focus-visible:bg-gray-600',
+        'group m-1.5 flex w-full cursor-pointer items-center gap-2 rounded p-2.5 text-sm radix-disabled:pointer-events-none radix-disabled:opacity-50 dark:hover:bg-gray-600 dark:focus-visible:bg-gray-600',
         className,
       )}
-      disabled={disabled}
-      onClick={handler}
     >
-      {renaming ? (
-        <CheckMark />
-      ) : appendLabel ? (
-        <>
-          <EditIcon /> {localize('com_ui_rename')}
-        </>
-      ) : (
-        <EditIcon />
-      )}
-    </button>
+      Cost: ${((data?.cost ?? 0) / 1000000).toFixed(3)} $
+    </div>
   );
 }

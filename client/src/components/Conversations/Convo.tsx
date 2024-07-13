@@ -128,10 +128,7 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
         >
           <DropDownMenu>
             <CostButton
-              renaming={renaming}
-              onRename={onRename}
-              renameHandler={renameHandler}
-              appendLabel={true}
+              conversationId={conversationId}
               className="mb-[3.5px]"
             />
             {startupConfig && startupConfig.sharedLinksEnabled && (
