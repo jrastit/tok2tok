@@ -1,5 +1,6 @@
 const { Transaction } = require('./Transaction');
 const { logger } = require('~/config');
+const Conversation = require('./Conversation');
 
 /**
  * Creates up to two transactions to record the spending of tokens.
@@ -38,6 +39,10 @@ const spendTokens = async (txData, tokenUsage) => {
         tokenType: 'prompt',
         rawAmount: -promptTokens,
       });
+
+      if (txData.conversationId) {
+        await Conversation.spendToken({ conversationId: txData.conversationId, value: -prompt['prompt'] });
+      }
     }
 
     if (!completionTokens && isNaN(completionTokens)) {
@@ -51,16 +56,20 @@ const spendTokens = async (txData, tokenUsage) => {
       rawAmount: -completionTokens,
     });
 
+    if (txData.conversationId) {
+      await Conversation.spendToken({ conversationId: txData.conversationId, value: -completion['completion'] });
+    }
+
     prompt &&
-      completion &&
-      logger.debug('[spendTokens] Transaction data record against balance:', {
-        user: txData.user,
-        prompt: prompt.prompt,
-        promptRate: prompt.rate,
-        completion: completion.completion,
-        completionRate: completion.rate,
-        balance: completion.balance,
-      });
+    completion &&
+    logger.debug('[spendTokens] Transaction data record against balance:', {
+      user: txData.user,
+      prompt: prompt.prompt,
+      promptRate: prompt.rate,
+      completion: completion.completion,
+      completionRate: completion.rate,
+      balance: completion.balance,
+    });
   } catch (err) {
     logger.error('[spendTokens]', err);
   }

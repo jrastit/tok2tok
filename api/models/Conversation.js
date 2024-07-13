@@ -19,6 +19,12 @@ const getConvo = async (user, conversationId) => {
 
 module.exports = {
   Conversation,
+  spendToken: async ({ conversationId, value }) => {
+    await Conversation.findOneAndUpdate({ conversationId },
+      {
+        $inc: { cost: value },
+      });
+  },
   saveConvo: async (user, { conversationId, newConversationId, ...convo }) => {
     try {
       const messages = await getMessages({ conversationId }, '_id');

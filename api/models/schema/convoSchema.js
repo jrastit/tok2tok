@@ -15,6 +15,10 @@ const convoSchema = mongoose.Schema(
       default: 'New Chat',
       meiliIndex: true,
     },
+    cost: {
+      type: Number,
+      default: 0,
+    },
     user: {
       type: String,
       index: true,

@@ -300,6 +300,7 @@ export const coerceNumber = z.union([z.number(), z.string()]).transform((val) =>
 export const tConversationSchema = z.object({
   conversationId: z.string().nullable(),
   title: z.string().nullable().or(z.literal('New Chat')).default('New Chat'),
+  cost: z.number(),
   user: z.string().optional(),
   endpoint: eModelEndpointSchema.nullable(),
   endpointType: eModelEndpointSchema.optional(),
