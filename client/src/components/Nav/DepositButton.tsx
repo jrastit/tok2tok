@@ -1,6 +1,10 @@
 import USDIA_test from '../../../../tok2tok-contract/contracts/artifacts/USDIA_test.json';
 import { useAccount, useSimulateContract, useWriteContract } from 'wagmi';
 import { useState } from 'react';
+import { centsToCredits, creditsToToken, formatAmount } from '~/utils';
+
+const centsToDeposit = 100;
+const tokenToDeposit = BigInt(centsToDeposit) * BigInt(centsToCredits) * creditsToToken;
 
 const DepositButton = () => {
   const { address } = useAccount();
@@ -18,7 +22,7 @@ const DepositButton = () => {
     address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
     abi: USDIA_test.abi,
     functionName: 'transfer',
-    args: ['0x169F1C2Cfb68C84f9f6a68b3E7267C95d1CF1d83', 1000000000000000000n],
+    args: ['0x169F1C2Cfb68C84f9f6a68b3E7267C95d1CF1d83', tokenToDeposit],
   });
   const { writeContractAsync: writeTransfer } = useWriteContract();
 
@@ -40,7 +44,7 @@ const DepositButton = () => {
         }
       }}
     >
-      Deposit 1 USDC
+      Deposit {formatAmount(centsToDeposit * centsToCredits)} USDC
     </button>
   );
 };

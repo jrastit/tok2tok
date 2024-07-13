@@ -1,7 +1,9 @@
 import USDIA_test from '../../../../tok2tok-contract/contracts/artifacts/USDIA_test.json';
 import { useAccount, useSimulateContract, useWriteContract } from 'wagmi';
+import { creditsToToken, formatAmount, centsToCredits } from '~/utils';
 
-const amountToMint = 100n;
+const centsToMint = 1000;
+const tokenToMint = BigInt(centsToMint) * BigInt(centsToCredits) * creditsToToken;
 
 const MintButton = () => {
   const { address } = useAccount();
@@ -10,7 +12,7 @@ const MintButton = () => {
     address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
     abi: USDIA_test.abi,
     functionName: 'mint',
-    args: [address, amountToMint * 1000000000000000000n],
+    args: [address, tokenToMint],
   });
   const { writeContractAsync } = useWriteContract();
 
@@ -22,7 +24,7 @@ const MintButton = () => {
         console.log(`##### Mint transaction id=${transactionId}`);
       }}
     >
-      Mint {amountToMint.toString()} USDC
+      Mint {formatAmount(centsToMint * centsToCredits)} USDC
     </button>
   );
 };
