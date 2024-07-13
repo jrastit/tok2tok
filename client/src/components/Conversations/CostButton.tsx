@@ -24,7 +24,7 @@ export default function CostButton({
         className,
       )}
     >
-      Cost: ${((data?.cost ?? 0) / 1000000).toFixed(3)} $
+      Cost: {((data?.cost ?? 0) / 1000000).toFixed(3)} USDC
     </div>
   );
 }
