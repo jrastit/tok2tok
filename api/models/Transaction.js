@@ -6,6 +6,8 @@ const { logger } = require('~/config');
 const Balance = require('./Balance');
 const cancelRate = 1.15;
 
+const marginMultiplier = 2;
+
 // Method to calculate and set the tokenValue for a transaction
 transactionSchema.methods.calculateTokenValue = function () {
   if (!this.valueKey || !this.tokenType) {
@@ -13,7 +15,7 @@ transactionSchema.methods.calculateTokenValue = function () {
   }
   const { valueKey, tokenType, model, endpointTokenConfig } = this;
   const multiplier = Math.abs(getMultiplier({ valueKey, tokenType, model, endpointTokenConfig }));
-  this.rate = multiplier;
+  this.rate = multiplier * marginMultiplier;
   this.tokenValue = this.rawAmount * multiplier;
   if (this.context && this.tokenType === 'completion' && this.context === 'incomplete') {
     this.tokenValue = Math.ceil(this.tokenValue * cancelRate);
