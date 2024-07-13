@@ -14,6 +14,8 @@ import NavLink from './NavLink';
 import Logout from './Logout';
 import { cn, formatAmount } from '~/utils/';
 import store from '~/store';
+import MintButton from '~/components/Nav/MintButton';
+import DepositButton from '~/components/Nav/DepositButton';
 
 function NavLinks() {
   const localize = useLocalize();
@@ -86,6 +88,8 @@ function NavLinks() {
                     <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
                       {`Balance: ${formatAmount(Number.parseFloat(balanceQuery.data || '0'))} USDC`}
                     </div>
+                    <DepositButton/>
+                    <MintButton/>
                     <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none"/>
                   </>
                 )}
