@@ -1,0 +1,42 @@
+type BillUser @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserDepositUSDC @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserLock @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserLockCancel @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserWithdrawUSDC @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

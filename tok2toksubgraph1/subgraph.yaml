@@ -1,0 +1,38 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: scroll-sepolia
+    source:
+      address: "0x169F1C2Cfb68C84f9f6a68b3E7267C95d1CF1d83"
+      abi: Contract
+      startBlock: 5458807
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BillUser
+        - UserDepositUSDC
+        - UserLock
+        - UserLockCancel
+        - UserWithdrawUSDC
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: BillUser(indexed address,uint256)
+          handler: handleBillUser
+        - event: UserDepositUSDC(indexed address,uint256)
+          handler: handleUserDepositUSDC
+        - event: UserLock(indexed address)
+          handler: handleUserLock
+        - event: UserLockCancel(indexed address)
+          handler: handleUserLockCancel
+        - event: UserWithdrawUSDC(indexed address,uint256)
+          handler: handleUserWithdrawUSDC
+      file: ./src/contract.ts
