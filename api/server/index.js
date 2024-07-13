@@ -17,6 +17,7 @@ const configureSocialLogins = require('./socialLogins');
 const AppService = require('./services/AppService');
 const noIndex = require('./middleware/noIndex');
 const routes = require('./routes');
+const { listenBlockchain } = require('~/blockchain/blockchain');
 
 const { PORT, HOST, ALLOW_SOCIAL_LOGIN } = process.env ?? {};
 
@@ -27,6 +28,9 @@ const startServer = async () => {
   if (typeof Bun !== 'undefined') {
     axios.defaults.headers.common['Accept-Encoding'] = 'gzip';
   }
+
+  listenBlockchain();
+
   await connectDb();
   logger.info('Connected to MongoDB');
   await indexSync();
