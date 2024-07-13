@@ -70,3 +70,8 @@ export const defaultTextPropsLabel =
 export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const formatAmount = (credits: number) => {
+  const n = credits / 1000;
+  return (Math.round(n) / 1000).toFixed(3);
+};

@@ -12,7 +12,7 @@ import { useLocalize } from '~/hooks';
 import Settings from './Settings';
 import NavLink from './NavLink';
 import Logout from './Logout';
-import { cn } from '~/utils/';
+import { cn, formatAmount } from '~/utils/';
 import store from '~/store';
 
 function NavLinks() {
@@ -51,10 +51,10 @@ function NavLinks() {
                       }}
                       className="relative flex items-center justify-center rounded-full p-1 text-white"
                     >
-                      <UserIcon />
+                      <UserIcon/>
                     </div>
                   ) : (
-                    <img className="rounded-full" src={user?.avatar || avatarSrc} alt="avatar" />
+                    <img className="rounded-full" src={user?.avatar || avatarSrc} alt="avatar"/>
                   )}
                 </div>
               </div>
@@ -75,22 +75,23 @@ function NavLinks() {
               leaveFrom="translate-y-0 opacity-100"
               leaveTo="translate-y-2 opacity-0"
             >
-              <MenuItems className="absolute bottom-full left-0 z-[100] mb-1 mt-1 w-full translate-y-0 overflow-hidden rounded-lg border border-gray-300 bg-white p-1.5 opacity-100 shadow-lg outline-none dark:border-gray-600 dark:bg-gray-700">
+              <MenuItems
+                className="absolute bottom-full left-0 z-[100] mb-1 mt-1 w-full translate-y-0 overflow-hidden rounded-lg border border-gray-300 bg-white p-1.5 opacity-100 shadow-lg outline-none dark:border-gray-600 dark:bg-gray-700">
                 <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm" role="none">
                   {user?.email || localize('com_nav_user')}
                 </div>
-                <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
+                <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none"/>
                 {startupConfig?.checkBalance && (
                   <>
                     <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
-                      {`Balance: ${(parseFloat(balanceQuery.data || '0')/1000000).toFixed(3)} $`}
+                      {`Balance: ${formatAmount(Number.parseFloat(balanceQuery.data || '0'))} USDC`}
                     </div>
-                    <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
+                    <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none"/>
                   </>
                 )}
                 <MenuItem as="div">
                   <NavLink
-                    svg={() => <FileText className="icon-md" />}
+                    svg={() => <FileText className="icon-md"/>}
                     text={localize('com_nav_my_files')}
                     clickHandler={() => setShowFiles(true)}
                   />
@@ -98,7 +99,7 @@ function NavLinks() {
                 {startupConfig?.helpAndFaqURL !== '/' && (
                   <MenuItem as="div">
                     <NavLink
-                      svg={() => <LinkIcon />}
+                      svg={() => <LinkIcon/>}
                       text={localize('com_nav_help_faq')}
                       clickHandler={() => window.open(startupConfig?.helpAndFaqURL, '_blank')}
                     />
@@ -106,22 +107,22 @@ function NavLinks() {
                 )}
                 <MenuItem as="div">
                   <NavLink
-                    svg={() => <GearIcon className="icon-md" />}
+                    svg={() => <GearIcon className="icon-md"/>}
                     text={localize('com_nav_settings')}
                     clickHandler={() => setShowSettings(true)}
                   />
                 </MenuItem>
-                <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
+                <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none"/>
                 <MenuItem as="div">
-                  <Logout />
+                  <Logout/>
                 </MenuItem>
               </MenuItems>
             </Transition>
           </>
         )}
       </Menu>
-      {showFiles && <FilesView open={showFiles} onOpenChange={setShowFiles} />}
-      {showSettings && <Settings open={showSettings} onOpenChange={setShowSettings} />}
+      {showFiles && <FilesView open={showFiles} onOpenChange={setShowFiles}/>}
+      {showSettings && <Settings open={showSettings} onOpenChange={setShowSettings}/>}
     </>
   );
 }
