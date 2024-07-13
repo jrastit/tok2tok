@@ -20,7 +20,7 @@ import { QueryClient as QueryClientV5, QueryClientProvider as QueryClientProvide
 const queryClientV5 = new QueryClientV5();
 
 // 1. Get projectId from https://cloud.walletconnect.com
-const projectId = process.env.REACT_PUBLIC_PROJECT_ID;
+const projectId = 'adad6ddb068edeb3c80dccb1bf3e4673';
 
 // 2. Create wagmiConfig
 const metadata = {
