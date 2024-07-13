@@ -13,28 +13,29 @@ import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 
 import { WagmiProvider } from 'wagmi';
-import { mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores } from 'wagmi/chains';
+import { base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores } from 'wagmi/chains';
 import { QueryClient as QueryClientV5, QueryClientProvider as QueryClientProviderV5 } from '@tanstack/react-query';
 
 // 0. Setup queryClient
 const queryClientV5 = new QueryClientV5();
 
 // 1. Get projectId from https://cloud.walletconnect.com
-const projectId = 'adad6ddb068edeb3c80dccb1bf3e4673';
+const projectId = '128c21914dce46e87e821b14a9e495d0';
 
 // 2. Create wagmiConfig
 const metadata = {
   name: 'Tok2Tok',
-  description: 'Tok2Tok',
+  description: 'Tok2Tok dApp info',
   url: 'https://tok2tok.ai',
   icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
-const chains = [mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores];
+const chains = [base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores];
 const config = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
+  ssr: true,
   auth:{
     socials : ['google','discord','x','github'],
   },
