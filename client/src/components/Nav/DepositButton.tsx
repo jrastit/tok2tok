@@ -14,7 +14,7 @@ const DepositButton = () => {
     address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
     abi: USDIA_test.abi,
     functionName: 'approve',
-    args: [address, 1000000000000000000n],
+    args: [address, tokenToDeposit],
   });
   const { writeContractAsync: writeApprove } = useWriteContract();
 
