@@ -75,3 +75,6 @@ export const formatAmount = (credits: number) => {
   const n = credits / 1000;
   return (Math.round(n) / 1000).toFixed(3);
 };
+
+export const creditsToToken = 1_000_000_000_000n;
+export const centsToCredits = 1_000;
