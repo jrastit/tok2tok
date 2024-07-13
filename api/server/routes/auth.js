@@ -6,6 +6,7 @@ const {
   resetPasswordRequestController,
 } = require('~/server/controllers/AuthController');
 const { loginController } = require('~/server/controllers/auth/LoginController');
+const { loginWithWalletController } = require('~/server/controllers/auth/LoginWithWalletController');
 const { logoutController } = require('~/server/controllers/auth/LogoutController');
 const {
   checkBan,
@@ -30,6 +31,12 @@ router.post(
   checkBan,
   ldapAuth ? requireLdapAuth : requireLocalAuth,
   loginController,
+);
+router.post(
+  '/login-wallet',
+  // loginLimiter,
+  // checkBan,
+  loginWithWalletController,
 );
 router.post('/refresh', refreshController);
 router.post('/register', registerLimiter, checkBan, validateRegistration, registrationController);

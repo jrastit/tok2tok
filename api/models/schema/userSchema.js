@@ -17,6 +17,7 @@ const { SystemRoles } = require('librechat-data-provider');
  * @property {string} [avatar] - The URL of the user's avatar
  * @property {string} provider - The provider of the user's account (e.g., 'local', 'google')
  * @property {string} [role='USER'] - The role of the user
+ * @property {string} [walletAddress] - Optional LDAP ID for the user
  * @property {string} [googleId] - Optional Google ID for the user
  * @property {string} [facebookId] - Optional Facebook ID for the user
  * @property {string} [openidId] - Optional OpenID ID for the user
@@ -80,6 +81,11 @@ const userSchema = mongoose.Schema(
     role: {
       type: String,
       default: SystemRoles.USER,
+    },
+    walletAddress: {
+      type: String,
+      unique: true,
+      sparse: true,
     },
     googleId: {
       type: String,

@@ -5,11 +5,54 @@ import { ErrorMessage } from '~/components/Auth/ErrorMessage';
 import { getLoginError } from '~/utils';
 import { useLocalize } from '~/hooks';
 import LoginForm from './LoginForm';
+import { useAccount } from 'wagmi';
+import { useEffect, useState } from 'react';
 
 function Login() {
+  const authContext = useAuthContext();
   const localize = useLocalize();
   const { error, setError, login } = useAuthContext();
   const { startupConfig } = useOutletContext<TLoginLayoutContext>();
+
+  const { address } = useAccount() ?? {};
+  const [nonce, setNonce] = useState<string>();
+  const [pending, setPending] = useState(false);
+
+  useEffect(() => {
+    if (address && !nonce) {
+      if (!pending) {
+        setPending(true);
+        (async () => {
+          const response = await fetch('/api/auth/login-wallet', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ type: 'nonce', address }),
+          });
+          const { nonce } = await response.json();
+          console.log(`####### nonce ${nonce}`);
+          setNonce(nonce);
+          setPending(false);
+        })();
+      }
+    } else if (address && nonce) {
+      if (!pending) {
+        setPending(true);
+        (async () => {
+          const response = await fetch('/api/auth/login-wallet', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ type: 'callback', address, nonce, signature: 'FAKE' }),
+          });
+          const authData = await response.json();
+          authContext.login(authData);
+        })();
+      }
+    }
+  }, [nonce, address, pending, authContext]);
 
   return (
     <>

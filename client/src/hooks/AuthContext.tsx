@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-import { setTokenHeader, SystemRoles } from 'librechat-data-provider';
+import { setTokenHeader, SystemRoles, type TUser } from 'librechat-data-provider';
 import {
   useGetUserQuery,
   useLoginUserMutation,
@@ -98,6 +98,10 @@ const AuthContextProvider = ({
     });
   };
 
+  const authUser = useCallback(({ user, token }: { user: TUser, token: string }) => {
+    setUserContext({ token, isAuthenticated: true, user, redirect: '/c/new' });
+  }, [setUserContext]);
+
   const silentRefresh = useCallback(() => {
     if (authConfig?.test) {
       console.log('Test mode. Skipping silent refresh.');
@@ -174,6 +178,7 @@ const AuthContextProvider = ({
       user,
       token,
       error,
+      authUser,
       login,
       logout,
       setError,
@@ -183,7 +188,7 @@ const AuthContextProvider = ({
       isAuthenticated,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [user, error, isAuthenticated, token, userRole],
+    [user, error, isAuthenticated, token, userRole, authUser],
   );
 
   return <AuthContext.Provider value={memoedValue}>{children}</AuthContext.Provider>;
