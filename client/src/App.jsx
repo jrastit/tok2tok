@@ -15,6 +15,7 @@ import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 import { WagmiProvider } from 'wagmi';
 import { base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores } from 'wagmi/chains';
 import { QueryClient as QueryClientV5, QueryClientProvider as QueryClientProviderV5 } from '@tanstack/react-query';
+import { defineChain } from 'viem';
 
 // 0. Setup queryClient
 const queryClientV5 = new QueryClientV5();
@@ -30,7 +31,26 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
-const chains = [base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores];
+const tok2tokChain = /*#__PURE__*/ defineChain({
+  id: 4251,
+  name: 'Tok2Tok Chain',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ['http://tok2tok.ai:8449'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Scrollscan',
+      url: 'http://tok2tok.ai:8449:1180',
+      apiUrl: 'http://tok2tok.ai:8449:1180/api',
+    },
+  },
+  testnet: true,
+});
+
+const chains = [base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores, tok2tokChain];
 const config = defaultWagmiConfig({
   chains,
   projectId,
