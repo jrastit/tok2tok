@@ -2,6 +2,7 @@ import USDIA_test from '../../../../tok2tok-contract/contracts/artifacts/USDIA_t
 import { useAccount, useSimulateContract, useWriteContract } from 'wagmi';
 import { useState } from 'react';
 import { centsToCredits, creditsToToken, formatAmount } from '~/utils';
+import useTok2TokContracts from '~/contracts/useTok2TokContracts';
 
 const centsToDeposit = 100;
 const tokenToDeposit = BigInt(centsToDeposit) * BigInt(centsToCredits) * creditsToToken;
@@ -9,9 +10,10 @@ const tokenToDeposit = BigInt(centsToDeposit) * BigInt(centsToCredits) * credits
 const DepositButton = () => {
   const { address } = useAccount();
   const [approved, setApproved] = useState(false);
+  const { usdia, tok2tok } = useTok2TokContracts();
 
   const { data: dataApprove } = useSimulateContract({
-    address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
+    address: usdia,
     abi: USDIA_test.abi,
     functionName: 'approve',
     args: [address, tokenToDeposit],
@@ -19,10 +21,10 @@ const DepositButton = () => {
   const { writeContractAsync: writeApprove } = useWriteContract();
 
   const { data: dataTransfer, refetch } = useSimulateContract({
-    address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
+    address: usdia,
     abi: USDIA_test.abi,
     functionName: 'transfer',
-    args: ['0x169F1C2Cfb68C84f9f6a68b3E7267C95d1CF1d83', tokenToDeposit],
+    args: [tok2tok, tokenToDeposit],
   });
   const { writeContractAsync: writeTransfer } = useWriteContract();
 
