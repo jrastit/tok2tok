@@ -30,7 +30,7 @@ const scrollPublicClient = createPublicClient({
   transport: http(),
 });
 
-const ootstockTestnetPublicClient = createPublicClient({
+const rootstockTestnetPublicClient = createPublicClient({
   chain: rootstockTestnet,
   transport: http(),
 });
@@ -52,9 +52,9 @@ const watchers = [
     tok2tok: '0x00000000000000000000000003799eb0c7C593F6125186d57D87c439be023BA0'.toLowerCase(),
   },
   {
-    client: ootstockTestnetPublicClient,
+    client: rootstockTestnetPublicClient,
     usdia: '0x92604A186DE35D9c1331596eE8d32c59f64A168F'.toLowerCase(),
-    tok2tok: '0x864f837ab31D23322D51C6D1EDEB6522CA10DC4a'.toLowerCase(),
+    tok2tok: '0x000000000000000000000000864f837ab31D23322D51C6D1EDEB6522CA10DC4a'.toLowerCase(),
   },
 ];
 
