@@ -63,7 +63,7 @@ const errorMessages = {
   },
   token_balance: (json: TTokenBalance) => {
     const { balance, tokenCost, promptTokens, generations } = json;
-    const message = `Insufficient Funds! Balance: ${formatAmount(balance['$numberDecimal'])}. Prompt tokens: ${promptTokens}. Cost: ${tokenCost}.`;
+    const message = `Insufficient Funds! Balance: ${formatAmount(balance['$numberDecimal'] ?? 0)}. Prompt tokens: ${promptTokens}. Cost: ${tokenCost}.`;
     return (
       <>
         {message}
