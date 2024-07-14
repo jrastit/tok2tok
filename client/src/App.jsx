@@ -13,7 +13,7 @@ import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 
 import { WagmiProvider } from 'wagmi';
-import { base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores } from 'wagmi/chains';
+import { base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores, rootstockTestnet } from 'wagmi/chains';
 import { QueryClient as QueryClientV5, QueryClientProvider as QueryClientProviderV5 } from '@tanstack/react-query';
 import { defineChain } from 'viem';
 
@@ -49,8 +49,8 @@ const tok2tokChain = /*#__PURE__*/ defineChain({
   },
   testnet: true,
 });
-
-const chains = [base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores, tok2tokChain];
+//Chainici
+const chains = [base, baseSepolia, mainnet, arbitrum, goerli, scrollSepolia, celoAlfajores, tok2tokChain, rootstockTestnet];
 const config = defaultWagmiConfig({
   chains,
   projectId,

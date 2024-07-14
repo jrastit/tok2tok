@@ -1,5 +1,5 @@
 const { createPublicClient, http, defineChain } = require('viem');
-const { scrollSepolia } = require('viem/chains');
+const { scrollSepolia, rootstockTestnet } = require('viem/chains');
 const { findUser, countUsers, createUser } = require('~/models');
 const { SystemRoles } = require('librechat-data-provider');
 const { Transaction } = require('~/models/Transaction');
@@ -22,9 +22,16 @@ const tok2tokChain = /*#__PURE__*/ defineChain({
   },
   testnet: true,
 });
+//Chainici
+///rootstockTestnet
 
 const scrollPublicClient = createPublicClient({
   chain: scrollSepolia,
+  transport: http(),
+});
+
+const ootstockTestnetPublicClient = createPublicClient({
+  chain: rootstockTestnet,
   transport: http(),
 });
 
@@ -43,6 +50,11 @@ const watchers = [
     client: tok2tokClient,
     usdia: '0xD503310a89F88255C2692c5D52091ba1D5DD0fa7'.toLowerCase(),
     tok2tok: '0x00000000000000000000000003799eb0c7C593F6125186d57D87c439be023BA0'.toLowerCase(),
+  },
+  {
+    client: ootstockTestnetPublicClient,
+    usdia: '0x92604A186DE35D9c1331596eE8d32c59f64A168F'.toLowerCase(),
+    tok2tok: '0x864f837ab31D23322D51C6D1EDEB6522CA10DC4a'.toLowerCase(),
   },
 ];
 
