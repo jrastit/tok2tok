@@ -53,7 +53,7 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                 containerClassName={containerClassName}
                 context="landing"
                 className="h-2/3 w-2/3"
-                size={41}
+                size={48}
               />
               {!!startupConfig?.showBirthdayIcon && (
                 <div>

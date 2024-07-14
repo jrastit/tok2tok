@@ -2,7 +2,7 @@ import { cn } from '~/utils/';
 import logo from './Logo.png';
 
 export default function GPTIcon({
-  size = 40,
+  size = 20,
   className = '',
 }: {
   size?: number;
@@ -27,6 +27,6 @@ export default function GPTIcon({
     //     fill="currentColor"
     //   />
     // </svg>
-    <img src={logo} alt="Logo" style={{height:'100%', width:width}} />
+    <img src={logo} alt="Logo" style={{height:'100%', width:size}} />
   );
 }
