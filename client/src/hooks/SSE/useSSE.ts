@@ -76,6 +76,15 @@ export default function useSSE(
   });
 
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      balanceQuery.refetch();
+    }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [balanceQuery]);
+
+  useEffect(() => {
     if (submission === null || Object.keys(submission).length === 0) {
       return;
     }
