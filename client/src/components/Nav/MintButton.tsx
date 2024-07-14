@@ -1,15 +1,17 @@
 import USDIA_test from '../../../../tok2tok-contract/contracts/artifacts/USDIA_test.json';
 import { useAccount, useSimulateContract, useWriteContract } from 'wagmi';
 import { creditsToToken, formatAmount, centsToCredits } from '~/utils';
+import useTok2TokContracts from '~/contracts/useTok2TokContracts';
 
 const centsToMint = 1000;
 const tokenToMint = BigInt(centsToMint) * BigInt(centsToCredits) * creditsToToken;
 
 const MintButton = () => {
   const { address } = useAccount();
+  const { usdia } = useTok2TokContracts();
 
   const { data } = useSimulateContract({
-    address: '0x0e87Fe746789dAb39B98a3E8c44D38665Ed55952',
+    address: usdia,
     abi: USDIA_test.abi,
     functionName: 'mint',
     args: [address, tokenToMint],
