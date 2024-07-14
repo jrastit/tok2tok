@@ -75,7 +75,7 @@ export default function PopoverButtons({
           setSettingsView(SettingsViews.default);
           setShowAgentSettings((prev) => !prev);
         },
-        icon: <GPTIcon className={cn('mr-1 w-[14px]', iconClass)} size={24} />,
+        icon: <GPTIcon className={cn('mr-1 w-[14px]', iconClass)} size={40} />,
       },
     ],
   };

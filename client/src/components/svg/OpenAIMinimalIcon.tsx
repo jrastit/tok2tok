@@ -1,8 +1,8 @@
 export default function OpenAIMinimalIcon({ className = 'h-4 w-4' }) {
   return (
     <svg
-      stroke="currentColor"
-      fill="currentColor"
+      stroke="black"
+      fill="orange"
       strokeWidth="1"
       viewBox="0 0 40 40"
       strokeLinecap="round"
